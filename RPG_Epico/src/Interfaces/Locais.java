@@ -2,6 +2,8 @@ package Interfaces;
 
 public interface Locais {
 
-	public void mudarDeLocal();
+    public void chegando();
+    
+    public void saindo();
 
 }

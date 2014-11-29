@@ -2,6 +2,6 @@ package Interfaces;
 
 public interface Armas {
 
-	public void causarDanos();
+    public void causarDanos();
 
 }

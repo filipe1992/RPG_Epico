@@ -2,8 +2,8 @@ package Interfaces;
 
 public interface Personagem {
 
-	public boolean usarArmarnatural();
+    public boolean usarArmarnatural();
 
-	public boolean usarArmaSobrehumano();
+    public boolean usarArmaSobrehumano();
 
 }
