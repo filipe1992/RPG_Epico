@@ -1,26 +1,30 @@
 package abstratas;
 
 import Interfaces.Armas;
-import Interfaces.Personagem;
 
 public abstract class ArmaCorpoACorpo implements Armas {
 
-    protected int dano;
+	private int dano;
 
-    public ArmaCorpoACorpo(int dano) {
-        this.dano = dano;
-    }
-    
-    public ArmaCorpoACorpo() {
-        this.dano = 1;
-    }
+	public void destruir() {
 
-    /**
-     * @param h
-     * @param v
-     * @see Interfaces.Armas#causarDanos()
-     */
-    @Override
-    public abstract void causarDanos(Personagem h, Personagem v);
+	}
+
+	public ArmaCorpoACorpo() {
+
+	}
+
+	public ArmaCorpoACorpo(int dano) {
+
+	}
+
+
+	/**
+	 * @see Interfaces.Armas#causarDanos()
+	 */
+        @Override
+	public void causarDanos() {
+
+	}
 
 }

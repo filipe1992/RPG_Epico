@@ -1,60 +1,32 @@
 package abstratas;
 
 import Interfaces.Armas;
-import Interfaces.Personagem;
 
 public abstract class ArmaADistancia implements Armas {
 
-    protected int dano;
+	protected int dano;
 
-    protected byte chancesdeerro;
-    
-    public abstract void subirDeNivel(Personagem P);
+	protected byte chancesdeerro;
 
-    public ArmaADistancia() {
-        setChancesdeerro(((byte) 10));
-        setDano(1);
-        
-    }
+	public void atirar() {
 
-    public ArmaADistancia(int dano, byte chacesdeerro) {
-        setDano(dano);
-        setChancesdeerro(chancesdeerro);
-    }
+	}
 
-    public int getDano() {
-        return dano;
-    }
+	public ArmaADistancia() {
 
-    public final void setDano(int dano) {
-        if (dano<=0)
-            dano=1;
-        this.dano = dano;
-    }
+	}
 
-    public byte getChancesdeerro() {
-        return chancesdeerro;
-    }
+	public ArmaADistancia(int dano, byte chacesdeerro) {
 
-    public final void setChancesdeerro(byte chancesdeerro) {
-        if (chancesdeerro < 1)
-            chancesdeerro=10;
-        this.chancesdeerro = chancesdeerro;
-    }
-    
-    
+	}
 
-    /**
-     * @param h
-     * @param v
-     * @see Interfaces.Armas#causarDanos()
-     */
-    @Override
-    public abstract void causarDanos(Personagem h,Personagem v);
 
-    @Override
-    public String toString() {
-        return "dano atual: " + dano + "\n chances de erro: 1 para " + chancesdeerro;
-    }
+	/**
+	 * @see Interfaces.Armas#causarDanos()
+	 */
+        @Override
+	public void causarDanos() {
+
+	}
 
 }
