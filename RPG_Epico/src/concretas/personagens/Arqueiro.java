@@ -1,4 +1,4 @@
-package concretas;
+package concretas.personagens;
 
 import abstratas.Heroi;
 
@@ -33,5 +33,6 @@ public class Arqueiro extends Heroi {
     public void fugir() {
 
     }
+
 
 }

@@ -1,4 +1,4 @@
-package concretas;
+package concretas.personagens;
 
 import abstratas.Vilao;
 
