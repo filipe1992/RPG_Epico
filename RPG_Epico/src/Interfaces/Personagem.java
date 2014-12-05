@@ -2,7 +2,6 @@ package Interfaces;
 
 public interface Personagem {
 
-<<<<<<< HEAD
     public boolean usarArmarnatural();
 
     public boolean usarArmaSobrehumano();
@@ -15,12 +14,9 @@ public interface Personagem {
     
     public void setLife(byte life);
     
+    public abstract void subirdenivel();
+    
+    
     @Override
     public String toString();
-=======
-	public boolean usarArmarnatural();
-
-	public boolean usarArmaSobrehumano();
->>>>>>> parent of b13c37f... pequenas modificações 
-
 }

@@ -3,7 +3,6 @@ package abstratas;
 import Interfaces.Armas;
 import Interfaces.Itens;
 import Interfaces.Personagem;
-<<<<<<< HEAD
 import concretas.itens.Armaduras;
 import concretas.itens.Remedios;
 import java.util.ArrayList;
@@ -113,37 +112,10 @@ public abstract class Heroi implements Personagem {
     }
 
     //fim funçoes sets;
-=======
-import java.util.ArrayList;
-
-public abstract class Heroi implements Personagem {
-
-    protected int niveldebondade;
-
-    protected int life;
-
-    protected float dinheiro;
-
-    protected ArrayList<Itens> itens;
-
-    protected ArrayList<Armas> armas;
-
-    protected int nivel;
-
-    public Heroi() {
-
-    }
-
-    public Heroi(int niveldebondade, int life) {
-
-    }
-
->>>>>>> parent of b13c37f... pequenas modificações 
     public abstract void atacar();
 
     public abstract void fugir();
 
-<<<<<<< HEAD
     //para realisar a busca por uma batalha ele devera devouver seu nivel para encontrar um oponete a altura.
     //que sera usada na função batalha do main.
     public int buscarBatalhas() {
@@ -156,9 +128,9 @@ public abstract class Heroi implements Personagem {
         Itens novo;
         boolean nsair;
         System.out.println("dinheiro: " + dinheiro);
-        do{
+        do {
             System.out.println("digite o item a ser comprado: ");
-            switch(in.nextInt()){
+            switch (in.nextInt()) {
                 case 1:
                     System.out.println("*********Armaduras*******");
                     novo = new Armaduras();
@@ -174,10 +146,9 @@ public abstract class Heroi implements Personagem {
                 default:
                     System.out.println("digite um dalor valido!!!!");
                     nsair = true;
-        }
-        }while(nsair);
-        
-        
+            }
+        } while (nsair);
+
     }
 
     public void usarItem() {
@@ -213,23 +184,11 @@ public abstract class Heroi implements Personagem {
                     nsair = true;
             }
         } while (nsair);
-        
+
         System.out.println("digite o codigo do que voce quer usar: ");
         int escolha = in.nextInt();
         itens.get(escolha).usar(this);
         itens.remove(escolha);
-=======
-    public void buscarBatalhas() {
-
-    }
-
-    public void comprarItens() {
-
-    }
-
-    public void usarItem() {
->>>>>>> parent of b13c37f... pequenas modificações 
-
     }
 
     /**
@@ -237,11 +196,7 @@ public abstract class Heroi implements Personagem {
      */
     @Override
     public boolean usarArmarnatural() {
-<<<<<<< HEAD
         return !armas.isEmpty();
-=======
-        return false;
->>>>>>> parent of b13c37f... pequenas modificações 
     }
 
     /**
@@ -249,11 +204,20 @@ public abstract class Heroi implements Personagem {
      */
     @Override
     public boolean usarArmaSobrehumano() {
-<<<<<<< HEAD
         return !armas.isEmpty();
-=======
-        return false;
->>>>>>> parent of b13c37f... pequenas modificações 
+
     }
+
+    @Override
+    public String toString() {
+        return " Este Heroi possui: \n"
+                + "niveldebondade=" + niveldebondade
+                + "life=" + life + 
+                "\nlifemaximo=" + lifemaximo + "\n"
+                + "nivel=" + nivel + "\n"
+                + "armadura=" + armadura;
+    }
+    
+    
 
 }

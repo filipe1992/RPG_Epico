@@ -8,26 +8,34 @@ public class Machado extends ArmaCorpoACorpo {
 
     private int amolacao;
 
-    public void afiar(Personagem p) {
-        System.out.println("o preço deste up grade é: " + (2 * this.amolacao));
+    @Override
+    public void subirDeNivel(Personagem p) {
+        System.out.println("o preço deste upgrade é: " + (2 * this.amolacao));
         if (p.getDinheiro() >= 2 * this.amolacao) {
             p.setDinheiro(p.getDinheiro() - 2 * this.amolacao);
             this.amolacao += 1;
             System.out.println(this);
-        }
-
-    }
-
-    public void melhorar(float dinheir) {
+        }else
+            System.out.println("voce não possui dinheiro para isso!!!!");
 
     }
 
     public Machado() {
-
+        super();
+        this.amolacao = 1;
     }
 
     public Machado(int amolacao, int dano) {
+        super(dano);
+        this.setAmolacao(amolacao);
+    }
 
+    public int getAmolacao() {
+        return amolacao;
+    }
+
+    public final void setAmolacao(int amolacao) {
+        this.amolacao = amolacao;
     }
 
     @Override
@@ -40,4 +48,11 @@ public class Machado extends ArmaCorpoACorpo {
         }
         ((Vilao) v).setLife(((Vilao) v).getLife());
     }
+
+    @Override
+    public String toString() {
+        return "Este Machado possui: " + "\n"
+                + "amolacao=" + amolacao + super.toString();
+    }
+    
 }

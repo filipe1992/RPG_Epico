@@ -47,10 +47,11 @@ public class ArcoEFlecha extends ArmaADistancia {
     }
 
     /**
+     * @return 
      * @see Interfaces.Armas#causarDanos()
      */
     @Override
-    public void causarDanos(Personagem h, Personagem v) {//h ataca v;
+    public boolean causarDanos(Personagem h, Personagem v) {//h ataca v;
         int erro;
         if (h instanceof Arqueiro || h instanceof Gnomo) {
             erro = this.chancesdeerro;
@@ -68,7 +69,9 @@ public class ArcoEFlecha extends ArmaADistancia {
                     v.setLife((byte) (v.getLife() - this.dano));
                 }
             }
+            return true;
         }
+        return false;
     }
 
     @Override

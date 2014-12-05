@@ -25,6 +25,11 @@ public class Arqueiro extends Heroi {
     }
 
     @Override
+    public void subirdenivel(){
+        
+    }
+    
+    @Override
     public void atacar() {
 
     }

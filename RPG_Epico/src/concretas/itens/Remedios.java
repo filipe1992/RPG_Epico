@@ -3,11 +3,8 @@ package concretas.itens;
 import Interfaces.Itens;
 import Interfaces.Personagem;
 import abstratas.Heroi;
-import java.util.Scanner;
 
 public class Remedios implements Itens {
-
-    private static final Scanner in = new Scanner(System.in);
 
     protected int melhorarem;
 
@@ -106,5 +103,13 @@ public class Remedios implements Itens {
     public void usar(Personagem p) {
         ((Heroi) p).setLife((byte) (((this.melhorarem / 100)*((Heroi) p).getLifemaximo()) + ((Heroi) p).getLife()));
     }
+
+    @Override
+    public String toString() {
+        return "Este Remedio pode: " + "\n"
+                + "melhorar su life em=" + melhorarem;
+    }
+    
+    
 
 }

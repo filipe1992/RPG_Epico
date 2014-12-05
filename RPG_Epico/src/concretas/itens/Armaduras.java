@@ -3,13 +3,8 @@ package concretas.itens;
 import Interfaces.Itens;
 import Interfaces.Personagem;
 import abstratas.Heroi;
-import java.util.Scanner;
 
 public class Armaduras implements Itens {
-
-    //para facilitar
-    private static Scanner in = new Scanner(System.in);
-    //para o uso nos metodos;
 
     protected static final String descricao = "Ideal para batalhas.\n"
             + "Com esta proteção você terá mais chances de destruir seus inimigos.\n"
@@ -109,5 +104,13 @@ public class Armaduras implements Itens {
     public void usar(Personagem p) {
         ((Heroi) p).setArmadura(this.protecao);
     }
+
+    @Override
+    public String toString() {
+        return "Esta Armadura possui: " + "\n"
+                + "protecao=" + protecao;
+    }
+    
+    
 
 }
