@@ -3,22 +3,26 @@ package abstratas;
 import Interfaces.Armas;
 import Interfaces.Itens;
 import Interfaces.Personagem;
-import concretas.Armaduras;
-import concretas.Remedios;
+import concretas.itens.Armaduras;
+import concretas.itens.Remedios;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class Heroi implements Personagem {
 
     //para facilitar
-    private static Scanner in = new Scanner(System.in);
+    protected static Scanner in = new Scanner(System.in);
     //para o uso nos metodos;
 
     protected int niveldebondade;
 
     protected byte life;
 
+    protected byte lifemaximo;
+
     protected int nivel;
+
+    protected int armadura;
 
     protected static float dinheiro = 0;
 
@@ -30,14 +34,84 @@ public abstract class Heroi implements Personagem {
         this.niveldebondade = niveldebondade;
         this.life = life;
         this.nivel = 0;
+        this.lifemaximo = life;
     }
 
     public Heroi() {
         this.niveldebondade = 0;
         this.life = 100;
+        this.lifemaximo = 100;
         this.nivel = 0;
     }
 
+    //funções gets{
+    public int getArmadura() {
+        return armadura;
+    }
+
+    public int getNiveldebondade() {
+        return niveldebondade;
+    }
+
+    @Override
+    public byte getLife() {
+        return life;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    @Override
+    public float getDinheiro() {
+        return dinheiro;
+    }
+
+    public static ArrayList<Itens> getItens() {
+        return itens;
+    }
+
+    public static ArrayList<Armas> getArmas() {
+        return armas;
+    }
+
+    public void setLifemaximo(byte lifemaximo) {
+        this.lifemaximo = lifemaximo;
+    }
+
+    //}fim funções gets;
+    //funções sets{
+    public void setArmadura(int armadura) {
+        this.armadura = armadura;
+    }
+
+    public void setNiveldebondade(int niveldebondade) {
+        this.niveldebondade = niveldebondade;
+    }
+
+    @Override
+    public void setLife(byte life) {
+        if (life > this.lifemaximo) {
+            this.life = this.lifemaximo;
+        } else {
+            this.life = life;
+        }
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    @Override
+    public void setDinheiro(float dinheiro) {
+        Heroi.dinheiro = dinheiro;
+    }
+
+    public byte getLifemaximo() {
+        return lifemaximo;
+    }
+
+    //fim funçoes sets;
     public abstract void atacar();
 
     public abstract void fugir();
@@ -51,7 +125,31 @@ public abstract class Heroi implements Personagem {
     }
 
     public void comprarItens() {
+        Itens novo;
+        boolean nsair;
         System.out.println("dinheiro: " + dinheiro);
+        do{
+            System.out.println("digite o item a ser comprado: ");
+            switch(in.nextInt()){
+                case 1:
+                    System.out.println("*********Armaduras*******");
+                    novo = new Armaduras();
+                    novo.escolher(this);
+                    nsair = false;
+                    break;
+                case 2:
+                    System.out.println("**********Remedios*********");
+                    novo = new Armaduras();
+                    novo.escolher(this);
+                    nsair = false;
+                    break;
+                default:
+                    System.out.println("digite um dalor valido!!!!");
+                    nsair = true;
+        }
+        }while(nsair);
+        
+        
     }
 
     public void usarItem() {
@@ -64,18 +162,20 @@ public abstract class Heroi implements Personagem {
             switch (in.nextInt()) {
                 case 1:
                     System.out.println("Voce possui os seguintes remedios: ");
-                    for (Itens iten : itens) {
-                        if (iten instanceof Remedios) {
-                            System.out.println(iten);
+                    for (int i = 0; i < itens.size(); i++) {
+                        if (itens.get(i) instanceof Remedios) {
+                            System.out.println("Codigo: " + i);
+                            System.out.println(itens.get(i));
                         }
                     }
                     nsair = false;
                     break;
                 case 2:
                     System.out.println("Voce possui as seguintes armaduras: ");
-                    for (Itens iten : itens) {
-                        if (iten instanceof Armaduras) {
-                            System.out.println(iten);
+                    for (int i = 0; i < itens.size(); i++) {
+                        if (itens.get(i) instanceof Armaduras) {
+                            System.out.println("Codigo: " + i);
+                            System.out.println(itens.get(i));
                         }
                     }
                     nsair = false;
@@ -85,6 +185,11 @@ public abstract class Heroi implements Personagem {
                     nsair = true;
             }
         } while (nsair);
+        
+        System.out.println("digite o codigo do que voce quer usar: ");
+        int escolha = in.nextInt();
+        itens.get(escolha).usar(this);
+        itens.remove(escolha);
 
     }
 
