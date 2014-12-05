@@ -112,10 +112,7 @@ public abstract class Heroi implements Personagem {
     }
 
     //fim funçoes sets;
-    public abstract void atacar();
-
-    public abstract void fugir();
-
+    
     //para realisar a busca por uma batalha ele devera devouver seu nivel para encontrar um oponete a altura.
     //que sera usada na função batalha do main.
     public int buscarBatalhas() {
@@ -195,17 +192,13 @@ public abstract class Heroi implements Personagem {
      * @return @see Interfaces.Personagem#usarArmarnatural()
      */
     @Override
-    public boolean usarArmarnatural() {
-        return !armas.isEmpty();
-    }
-
-    /**
-     * @return @see Interfaces.Personagem#usarArmaSobrehumano()
-     */
-    @Override
-    public boolean usarArmaSobrehumano() {
-        return !armas.isEmpty();
-
+    public int usarArmar(){
+        String escarmas[];
+        escarmas = new String[armas.size()];
+        for (int i = 0; i < armas.size(); i++) {
+            escarmas[i]=armas.get(i).toString();
+        }
+        
     }
 
     @Override
@@ -218,6 +211,4 @@ public abstract class Heroi implements Personagem {
                 + "armadura=" + armadura;
     }
     
-    
-
 }

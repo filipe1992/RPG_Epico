@@ -2,9 +2,7 @@ package Interfaces;
 
 public interface Personagem {
 
-    public boolean usarArmarnatural();
-
-    public boolean usarArmaSobrehumano();
+    public boolean usarArma();
     
     public float getDinheiro();
     
@@ -16,6 +14,9 @@ public interface Personagem {
     
     public abstract void subirdenivel();
     
+    public abstract void atacar(Personagem outro);
+
+    public abstract void fugir();
     
     @Override
     public String toString();

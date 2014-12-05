@@ -9,6 +9,7 @@ public abstract class ArmaADistancia implements Armas {
 
     protected byte chancesdeerro;
     
+    @Override
     public abstract void subirDeNivel(Personagem P);
 
     public ArmaADistancia() {
@@ -47,10 +48,11 @@ public abstract class ArmaADistancia implements Armas {
     /**
      * @param h
      * @param v
+     * @return 
      * @see Interfaces.Armas#causarDanos()
      */
     @Override
-    public abstract void causarDanos(Personagem h,Personagem v);
+    public abstract boolean causarDanos(Personagem h,Personagem v);
 
     @Override
     public String toString() {
