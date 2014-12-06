@@ -7,6 +7,8 @@ import concretas.itens.Armaduras;
 import concretas.itens.Remedios;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public abstract class Heroi implements Personagem {
 
@@ -112,7 +114,6 @@ public abstract class Heroi implements Personagem {
     }
 
     //fim funçoes sets;
-    
     //para realisar a busca por uma batalha ele devera devouver seu nivel para encontrar um oponete a altura.
     //que sera usada na função batalha do main.
     public int buscarBatalhas() {
@@ -132,12 +133,14 @@ public abstract class Heroi implements Personagem {
                     System.out.println("*********Armaduras*******");
                     novo = new Armaduras();
                     novo.escolher(this);
+                    itens.add(novo);
                     nsair = false;
                     break;
                 case 2:
                     System.out.println("**********Remedios*********");
-                    novo = new Armaduras();
+                    novo = new Remedios();
                     novo.escolher(this);
+                    itens.add(novo);
                     nsair = false;
                     break;
                 default:
@@ -192,23 +195,25 @@ public abstract class Heroi implements Personagem {
      * @return @see Interfaces.Personagem#usarArmarnatural()
      */
     @Override
-    public int usarArmar(){
+    public int usarArma() {
+        JFrame frame = new JFrame(" Armas ");
         String escarmas[];
-        escarmas = new String[armas.size()];
-        for (int i = 0; i < armas.size(); i++) {
-            escarmas[i]=armas.get(i).toString();
+        escarmas = new String[armas.size()+1];
+        escarmas[0] = "0 Escolha uma arma !!!!";
+        for (int i = 1; i <= armas.size(); i++) {
+            escarmas[i] = i + " " + armas.get(i-1).toString();
         }
-        
+        return (((int) (((String) JOptionPane.showInputDialog(frame,"Qual arma voce deseja usar ?? ","Arma",JOptionPane.QUESTION_MESSAGE,null,escarmas,escarmas[0])).charAt(0)))-48);
     }
 
     @Override
     public String toString() {
         return " Este Heroi possui: \n"
                 + "niveldebondade=" + niveldebondade
-                + "life=" + life + 
-                "\nlifemaximo=" + lifemaximo + "\n"
+                + "life=" + life
+                + "\nlifemaximo=" + lifemaximo + "\n"
                 + "nivel=" + nivel + "\n"
                 + "armadura=" + armadura;
     }
-    
+
 }

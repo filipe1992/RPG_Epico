@@ -39,14 +39,17 @@ public class Machado extends ArmaCorpoACorpo {
     }
 
     @Override
-    public void causarDanos(Personagem h, Personagem v) {
+    public boolean causarDanos(Personagem h, Personagem v) {
         if ((rand.nextInt(100) + 1) % (20 - this.amolacao) == 0) {
             if (this.dano >= ((Vilao) v).getLife()) {
                 System.out.println("voce tera que enferntar muitos outros inimigos ");
                 v.setLife((byte) 0);
+            }else{
+                v.setLife((byte) (v.getLife()-this.dano));
             }
+            return true;
         }
-        ((Vilao) v).setLife(((Vilao) v).getLife());
+        return false;
     }
 
     @Override
@@ -54,5 +57,5 @@ public class Machado extends ArmaCorpoACorpo {
         return "Este Machado possui: " + "\n"
                 + "amolacao=" + amolacao + super.toString();
     }
-    
+
 }

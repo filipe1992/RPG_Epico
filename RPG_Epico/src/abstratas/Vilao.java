@@ -65,17 +65,11 @@ public abstract class Vilao implements Personagem {
      * @see Interfaces.Personagem#usarArmarnatural()
      */
     @Override
-    public boolean usarArmarnatural() {
-        return !armas.isEmpty();
-    }
-
-    /**
-     * @return 
-     * @see Interfaces.Personagem#usarArmaSobrehumano()
-     */
-    @Override
-    public boolean usarArmaSobrehumano() {
-        return !armas.isEmpty();
+    public int usarArma() {
+        if (!armas.isEmpty()){
+            return 1;
+        }
+        return 0;
     }
 
 }

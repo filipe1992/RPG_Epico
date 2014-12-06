@@ -2,7 +2,6 @@ package concretas.armas;
 
 import Interfaces.Personagem;
 import abstratas.ArmaCorpoACorpo;
-import abstratas.Vilao;
 
 public class Espada extends ArmaCorpoACorpo {
 
@@ -38,7 +37,7 @@ public class Espada extends ArmaCorpoACorpo {
     }
 
     @Override
-    public void causarDanos(Personagem h, Personagem v) {
+    public boolean causarDanos(Personagem h, Personagem v) {
         if ((rand.nextInt(100) + 1) % (20 - this.tamanho) == 0) {
             if (this.dano >= v.getLife()) {
                 System.out.println("voce tera que enferntar muitos outros inimigos ");
@@ -46,8 +45,9 @@ public class Espada extends ArmaCorpoACorpo {
             } else {
                 v.setLife((byte) (v.getLife() - this.dano));
             }
+            return true;
         }
-        ((Vilao) v).setLife(((Vilao) v).getLife());
+        return false;
     }
 
     @Override

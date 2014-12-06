@@ -48,7 +48,7 @@ public class Cajado extends ArmaADistancia {
     }
     
     @Override
-    public void causarDanos(Personagem h, Personagem v) {
+    public boolean causarDanos(Personagem h, Personagem v) {
         byte dano1;
         int erro;
         if (h instanceof Mago || h instanceof Necromancer) {
@@ -69,7 +69,9 @@ public class Cajado extends ArmaADistancia {
                     v.setLife((byte) (v.getLife() - dano1));
                 }
             }
+            return true;
         }
+        return false;
     }
 
     @Override

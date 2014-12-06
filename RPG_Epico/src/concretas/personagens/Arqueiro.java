@@ -1,7 +1,10 @@
 package concretas.personagens;
 
+import Interfaces.Armas;
 import Interfaces.Personagem;
 import abstratas.Heroi;
+import concretas.armas.ArcoEFlecha;
+import javax.swing.JOptionPane;
 
 public class Arqueiro extends Heroi {
 
@@ -10,10 +13,17 @@ public class Arqueiro extends Heroi {
     private int erros;
 
     public boolean flechaComVeneno(Personagem vilao) {
-        if ()
+        Armas usar;
+        int index;
         System.out.println("usar flecha com veneno !!!");
-        if ()
-
+        index = this.usarArma();
+        if (index != 0){
+            usar = armas.get(index);
+            if (usar instanceof ArcoEFlecha){
+                JOptionPane.showMessageDialog(frame,"Uso correto de arma" );                
+            }
+        }
+            
     }
 
     public void FlechaComum() {
