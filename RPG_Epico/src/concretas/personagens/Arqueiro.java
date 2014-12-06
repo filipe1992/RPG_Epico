@@ -48,19 +48,21 @@ public class Arqueiro extends Heroi {
         if (usar.causarDanos(this, vilao)) {
             JOptionPane.showMessageDialog(frame, "causou dano !!!!");
             JOptionPane.showMessageDialog(frame, vilao.toString());
+            this.acertos+=1;
             vilao.setLife((byte) (vilao.getLife() - 5));
         } else {
             JOptionPane.showMessageDialog(frame, "a Arma falhou !!!!");
+            this.erros+=1;
         }
 
     }
 
-    public boolean FlechaComum(Personagem vilao) {
+    public void FlechaComum(Personagem vilao) {
         Armas usar = null;
         int index;
         boolean refaz;
         do {
-            System.out.println("usar flecha com veneno !!!");
+            System.out.println("usar flecha comum !!!");
             index = this.usarArma();
             if (index != 0) {
                 refaz = false;
@@ -80,11 +82,9 @@ public class Arqueiro extends Heroi {
             JOptionPane.showMessageDialog(frame, vilao.toString());
             this.acertos += 1;
             this.subirdenivel();
-            return true;
         } else {
             JOptionPane.showMessageDialog(frame, "a Arma falhou !!!!");
             this.erros += 1;
-            return false;
         }
     }
 
