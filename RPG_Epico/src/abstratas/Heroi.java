@@ -7,7 +7,6 @@ import concretas.itens.Armaduras;
 import concretas.itens.Remedios;
 import java.util.ArrayList;
 import java.util.Scanner;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public abstract class Heroi implements Personagem {
@@ -196,7 +195,6 @@ public abstract class Heroi implements Personagem {
      */
     @Override
     public int usarArma() {
-        JFrame frame = new JFrame(" Armas ");
         String escarmas[];
         escarmas = new String[armas.size()+1];
         escarmas[0] = "0 Escolha uma arma !!!!";
