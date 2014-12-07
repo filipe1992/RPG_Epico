@@ -69,7 +69,7 @@ public class Barbaro extends Heroi {
                 refaz = false;
                 usar = armas.get(index - 1);
                 if (usar instanceof Espada) {
-                    JOptionPane.showMessageDialog(frame, "Uso correto de arma ;-) ");
+                    JOptionPane.showMessageDialog(frame, "Uso correto de arma  ;-) ");
                 } else {
                     JOptionPane.showMessageDialog(frame, "Uso incorreto de armamento  :-( ");
                 }
@@ -115,10 +115,10 @@ public class Barbaro extends Heroi {
             String esc = (String) JOptionPane.showInputDialog(frame, "qual o tipo de ataque ??", "Ataques ", JOptionPane.QUESTION_MESSAGE, null, ataques, ataques[1]);
             if (esc != null) {
                 switch (esc) {
-                    case "flecha com veneno":
+                    case "Machado":
                         this.ComMachado(vilao);
                         break;
-                    case "flecha comum":
+                    case "Espada":
                         this.comEspada(vilao);
                         break;
                 }
