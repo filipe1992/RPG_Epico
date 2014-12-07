@@ -63,7 +63,7 @@ public class Barbaro extends Heroi {
         int index;
         boolean refaz;
         do {
-            System.out.println("usar flecha comum !!!");
+            System.out.println("usar espada !!!");
             index = this.usarArma();
             if (index != 0) {
                 refaz = false;

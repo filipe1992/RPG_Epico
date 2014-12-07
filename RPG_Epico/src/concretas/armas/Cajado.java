@@ -69,6 +69,7 @@ public class Cajado extends ArmaADistancia {
                     v.setLife((byte) (v.getLife() - dano1));
                 }
             }
+            h.setDinheiro(h.getDinheiro() + v.getDinheiro() );
             return true;
         }
         return false;

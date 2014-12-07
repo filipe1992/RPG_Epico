@@ -5,7 +5,6 @@ import Interfaces.Personagem;
 import static Interfaces.Personagem.frame;
 import abstratas.Heroi;
 import concretas.armas.Cajado;
-import concretas.armas.Machado;
 import javax.swing.JOptionPane;
 
 public class Mago extends Heroi {
@@ -87,6 +86,7 @@ public class Mago extends Heroi {
 
     public void golpeespelho(Personagem vilao) {
         vilao.atacar(vilao);
+        this.setLife((byte) (this.getLife() - 5));
         this.subirdenivel();
     }
 
@@ -132,6 +132,14 @@ public class Mago extends Heroi {
                 }
             }
         } while (refaz);
+    }
+
+    @Override
+    public String toString() {
+        return "Mago: \n"
+                + "fenticos com efeito=" + fenticoscomefeito + "\n"
+                + " fenticos sem efeito=" + fenticossemefeito + "\n"+
+                super.toString();
     }
 
 }

@@ -1,7 +1,6 @@
 package Interfaces;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 public interface Personagem {
     

@@ -64,11 +64,12 @@ public class ArcoEFlecha extends ArmaADistancia {
                 v.setLife((byte) 0);
             } else {
                 if (v instanceof Ogro || v instanceof Barbaro) {
-                    v.setLife((byte) (v.getLife() - this.dano + (this.nivel / 2)));
+                    v.setLife((byte) (v.getLife() - this.dano + (h.getLife() / 2)));
                 } else {
                     v.setLife((byte) (v.getLife() - this.dano));
                 }
             }
+            h.setDinheiro(h.getDinheiro() + v.getDinheiro() );
             return true;
         }
         return false;

@@ -45,6 +45,7 @@ public class Espada extends ArmaCorpoACorpo {
             } else {
                 v.setLife((byte) (v.getLife() - this.dano));
             }
+            h.setDinheiro(h.getDinheiro() + v.getDinheiro() );
             return true;
         }
         return false;
