@@ -56,7 +56,7 @@ public class Machado extends ArmaCorpoACorpo {
     @Override
     public String toString() {
         return "Este Machado possui: " + "\n"
-                + "amolacao=" + amolacao + super.toString();
+                + "amolacao=" + amolacao;
     }
 
 }

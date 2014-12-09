@@ -1,9 +1,13 @@
 package Principal;
 
 import static Interfaces.Armas.rand;
+import Interfaces.Locais;
 import Interfaces.Personagem;
 import static Interfaces.Personagem.frame;
-import abstratas.Vilao;
+import abstratas.Heroi;
+import concretas.lugares.Desertos;
+import concretas.lugares.Florestas;
+import concretas.lugares.cidades;
 import concretas.personagens.Arqueiro;
 import concretas.personagens.Barbaro;
 import concretas.personagens.Gnomo;
@@ -22,6 +26,7 @@ public class Principal {
     public static int numerodebatalhas;
 
     public static void main(String[] args) {
+        Locais lugar = new cidades();
         String[] herois = {"Arqueiro", "Barbaro", "Mago"};
         String escolha = (String) JOptionPane.showInputDialog(frame, "Escolha um heroi !!!!", "Heroi", JOptionPane.QUESTION_MESSAGE, null, herois, herois[0]);
         if (escolha == null) {
@@ -43,9 +48,68 @@ public class Principal {
             default:
                 JOptionPane.showMessageDialog(frame, "Escolha um heroi válido !!!! (sepol)");
         }
+        while(true)
+            menu(lugar);
 
     }
 
+    static void menu(Locais lugar){
+        String[] escolha = {"ir para outro lugar","buscar batalha","comprar coisas","usar item"};
+        String esc = (String) JOptionPane.showInputDialog(frame, "o que deseja fazer ??", "Menu", JOptionPane.QUESTION_MESSAGE, null, escolha, escolha[0]);
+        if (esc == null)
+            esc = "0";
+        switch(esc){
+            case "ir para outro lugar":
+                JOptionPane.showMessageDialog(frame, lugar.saindo());
+                String[] nescolha = {"Cidade","Deserto","floresta"};
+                esc = (String) JOptionPane.showInputDialog(frame, "Onde voce quer ir ???", "Menu", JOptionPane.QUESTION_MESSAGE, null, nescolha, nescolha[0]);
+                if (esc == null)
+                    esc = "0";
+                switch(esc){
+                    case "Cidade":
+                        lugar = new cidades();
+                        break;
+                    case "Deserto":
+                        lugar = new Desertos();
+                        break;
+                    case "floresta":
+                        lugar = new Florestas();
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(frame," vai ficar no mesmo lugar (sepol)");
+                }
+                JOptionPane.showMessageDialog(frame, lugar.chegando());
+                JOptionPane.showMessageDialog(frame, lugar.toString());
+                break;
+            case "buscar batalha":
+                escolha();
+                batalha(jogador);
+                break;
+            case "comprar coisas":
+                String[] ne = {"Itens","Armas"};
+                String esc1 = (String) JOptionPane.showInputDialog(frame, "Onde voce quer ir ???", "Menu", JOptionPane.QUESTION_MESSAGE, null, ne, ne[0]);
+                if (esc1 == null)
+                    esc1 = "0";
+        switch (esc1) {
+            case "Itens":
+                ((Heroi) jogador).comprarItens();
+                break;
+            case "Armas":
+                ((Heroi) jogador).comprarArma();
+                break;
+            default:
+                JOptionPane.showMessageDialog(frame, "valor invalido !!!");
+        }
+                break;
+            case "usar item":
+                ((Heroi) jogador).usarItem();
+                break;
+            default:
+                JOptionPane.showMessageDialog(frame,"nao escolheu uma opçao valida");
+        }
+    }
+    
+    
     public static void escolha() {
         switch (rand.nextInt(3)) {
             case 0:
@@ -56,11 +120,11 @@ public class Principal {
                 break;
             case 2:
                 Principal.adversario = new Necromancer();
-
+                break;
         }
     }
 
-    public static void batalha(Personagem jogador, Personagem adversario) {
+    public static void batalha(Personagem jogador) {
         JFrame frame = new JFrame();
         Principal.numerodebatalhas++;
         int i = JOptionPane.showConfirmDialog(frame, "deseja realmente entrar nessa batalha ????");

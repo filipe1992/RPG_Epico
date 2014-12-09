@@ -3,6 +3,10 @@ package abstratas;
 import Interfaces.Armas;
 import Interfaces.Itens;
 import Interfaces.Personagem;
+import concretas.armas.ArcoEFlecha;
+import concretas.armas.Cajado;
+import concretas.armas.Espada;
+import concretas.armas.Machado;
 import concretas.itens.Armaduras;
 import concretas.itens.Remedios;
 import java.util.ArrayList;
@@ -25,7 +29,7 @@ public abstract class Heroi implements Personagem {
 
     protected int armadura;
 
-    protected static float dinheiro = 0;
+    protected static float dinheiro = 100;
 
     protected static ArrayList<Itens> itens;
 
@@ -43,6 +47,7 @@ public abstract class Heroi implements Personagem {
         this.life = 100;
         this.lifemaximo = 100;
         this.nivel = 0;
+        armas = new ArrayList<>();
     }
 
     //funções gets{
@@ -201,7 +206,35 @@ public abstract class Heroi implements Personagem {
         for (int i = 1; i <= armas.size(); i++) {
             escarmas[i] = i + " " + armas.get(i-1).toString();
         }
-        return (((int) (((String) JOptionPane.showInputDialog(frame,"Qual arma voce deseja usar ?? ","Arma",JOptionPane.QUESTION_MESSAGE,null,escarmas,escarmas[0])).charAt(0)))-48);
+        String esc = (String) JOptionPane.showInputDialog(frame,"Qual arma voce deseja usar ?? ","Arma",JOptionPane.QUESTION_MESSAGE,null,escarmas,escarmas[0]);
+        if (esc == null)
+            return 0;
+        return (((int) esc.charAt(0)) -48);
+    }
+    
+    public void comprarArma(){
+        String[] escolha ={"Arco e Flecha","Cajado","Espada","Machado"};
+       String esc = (String) JOptionPane.showInputDialog(frame,"Qual arma voce deseja comprar ?? ","Armas",JOptionPane.QUESTION_MESSAGE,null,escolha,escolha[0]);
+       if (esc == null){
+           esc = "0";
+       }
+       switch(esc){
+           case "Arco e Flecha":
+               armas.add(new ArcoEFlecha());
+               break;
+           case "Cajado":
+               armas.add(new Cajado());
+               break;
+           case "Espada":
+               armas.add(new Espada());
+               break;
+           case "Machado":
+               armas.add(new Machado());
+               break;
+           default:
+               JOptionPane.showMessageDialog(frame, "Digite um valor valido...");
+               
+       }
     }
 
     @Override

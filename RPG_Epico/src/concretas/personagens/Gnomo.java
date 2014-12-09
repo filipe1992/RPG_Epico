@@ -25,6 +25,7 @@ public class Gnomo extends Vilao {
         this.poderTerreno = 0;
         this.acertos = 0;
         this.erros = 0;
+        this.armas.add(new ArcoEFlecha());
     }
 
     public void flechacomum(Personagem heroi) {

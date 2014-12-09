@@ -55,12 +55,21 @@ public class Ogro extends Vilao {
     }
 
     public Ogro() {
-
+        super();
+        this.poderdastrevas = 0;
+        this.exitos = 0;
+        this.falhas = 0;
+        this.armas.add(new Machado());
     }
 
-    public Ogro(int Poderdastrevas, int niveldemaldade, float dinheiro) {
-
+    public Ogro(int poderdastrevas, int exitos, int falhas, int niveldemaldade, float dinheiro) {
+        super(niveldemaldade, dinheiro);
+        this.poderdastrevas = poderdastrevas;
+        this.exitos = exitos;
+        this.falhas = falhas;
     }
+
+    
 
     @Override
     public void subirdenivel() {

@@ -19,7 +19,7 @@ public abstract class Vilao implements Personagem {
     protected ArrayList<Armas> armas;
 
     public void ataca(Personagem p) {
-
+        p.setLife((byte) (p.getLife() - rand.nextInt(niveldemaldade)));
     }
 
     public Vilao() {

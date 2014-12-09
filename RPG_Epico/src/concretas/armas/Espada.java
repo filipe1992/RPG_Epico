@@ -54,7 +54,7 @@ public class Espada extends ArmaCorpoACorpo {
     @Override
     public String toString() {
         return " Esta Espada possui: " + "\n"
-                + "tamanho=" + tamanho + "\n" + super.toString();
+                + "tamanho=" + tamanho;
     }
 
 }

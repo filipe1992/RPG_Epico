@@ -26,6 +26,7 @@ public class Necromancer extends Vilao {
         this.energia = 0;
         this.maldicoescomefeito = 0;
         this.maldicoessemefeito = 0;
+        this.armas.add(new Cajado());
     }
 
     public void maldicaofinal(Personagem heroi) {
