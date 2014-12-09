@@ -8,20 +8,21 @@ public class Florestas implements Locais {
             + " Não possuem muito dinheiro ou itens.";
 
     /**
+     * @return 
      * @see Interfaces.Locais#mudarDeLocal()
      */
     @Override
-    public void chegando() {
-        System.out.println("Seja bem vindo e fique atento nem tudo que parece, é...\n"
+    public String chegando() {
+       return "Seja bem vindo e fique atento nem tudo que parece, é...\n"
                 + "Entre as arvores e a escuridão, onde a luz do sol não pode chegar, há sempre alguém ou algo lhe observando. \n"
-                + "As plantas e os espíritos da floresta não irão ajudar-lhe.");
+                + "As plantas e os espíritos da floresta não irão ajudar-lhe.";
     }
 
     @Override
-    public void saindo() {
-        System.out.println("Parece que o horror da floresta não fez bem pra você.\n"
+    public String saindo() {
+        return "Parece que o horror da floresta não fez bem pra você.\n"
                 + "Fuja para o colo da sua mãe, humano medíocre.\n"
-                + "A floresta não é lugar para fracassados.  ");
+                + "A floresta não é lugar para fracassados.  ";
     }
     
     @Override

@@ -9,18 +9,19 @@ public class Desertos implements Locais {
 "Placa de entrada: <<A ESPERANÇA DEIXOU ESTE LUGAR>>";
 
     /**
+     * @return 
      * @see Interfaces.Locais#mudarDeLocal()
      */
     @Override
-    public void chegando() {
-        System.out.println("voce esta chegando ao deserto!!\n"
-                + "tome cuidado com inimigos!!!!");
+    public String chegando() {
+        return "voce esta chegando ao deserto!!\n"
+                + "tome cuidado com inimigos!!!!";
     }
 
     @Override
-    public void saindo() {
-        System.out.println("voce sobrevivel ao deserto !!!\n"
-                + "não são todos que saem com vida daqui. ");
+    public String saindo() {
+        return "voce sobrevivel ao deserto !!!\n"
+                + "não são todos que saem com vida daqui. ";
     }
 
     @Override

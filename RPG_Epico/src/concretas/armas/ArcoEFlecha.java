@@ -79,5 +79,4 @@ public class ArcoEFlecha extends ArmaADistancia {
     public String toString() {
         return "seu nivel atual é:" + nivel + "\n" + super.toString();
     }
-
 }

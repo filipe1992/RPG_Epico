@@ -2,8 +2,8 @@ package Interfaces;
 
 public interface Locais extends Comparable {
 
-    public void chegando();
+    public String chegando();
 
-    public void saindo();
+    public String saindo();
 
 }

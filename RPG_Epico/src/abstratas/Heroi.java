@@ -25,7 +25,7 @@ public abstract class Heroi implements Personagem {
 
     protected int armadura;
 
-    protected static float dinheiro = 0;
+    protected static float dinheiro = 100;
 
     protected static ArrayList<Itens> itens;
 

@@ -8,18 +8,19 @@ public class cidades implements Locais {
             + "Aqui não há lutas é um lugar para reabastecer suas energias e preparar-se para uma nova jornada em busca de fama dinheiro e poder.";
 
     /**
+     * @return 
      * @see Interfaces.Locais#mudarDeLocal()
      */
     @Override
-    public void chegando() {
-        System.out.println("seja bem vindo a grande cidade.\n"
-                + "Onde os maiores perigos são os moradores de rua e as crianças !!!");
+    public String chegando() {
+        return "seja bem vindo a grande cidade.\n"
+                + "Onde os maiores perigos são os moradores de rua e as crianças !!!";
     }
 
     @Override
-    public void saindo() {
-        System.out.println("não podera comprar nada, ate voltar aqui.\n"
-                + "boa sorte em sua jornada.");
+    public String saindo() {
+        return "não podera comprar nada, ate voltar aqui.\n"
+                + "boa sorte em sua jornada.";
     }
 
     @Override
