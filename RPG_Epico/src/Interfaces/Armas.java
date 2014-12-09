@@ -4,7 +4,7 @@ import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public interface Armas {
+public interface Armas extends Itens {
     
     static JOptionPane JO = new JOptionPane();
     static JFrame frame = new JFrame();

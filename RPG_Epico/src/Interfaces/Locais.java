@@ -1,6 +1,6 @@
 package Interfaces;
 
-public interface Locais {
+public interface Locais extends Comparable {
 
     public void chegando();
 

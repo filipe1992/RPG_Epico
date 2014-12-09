@@ -29,4 +29,18 @@ public class Florestas implements Locais {
         return descricao;
     }
 
+   @Override
+    public int compareTo(Object o) {
+        if (o instanceof Locais)
+            if (descricao.compareTo(o.toString())== -1){
+                return -1;
+            }else{
+                if (descricao.compareTo(o.toString())== 1)
+                    return 1;
+                else
+                    return 0;
+            }
+        return 1;
+    }
+
 }
