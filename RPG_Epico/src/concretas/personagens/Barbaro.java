@@ -20,13 +20,12 @@ public class Barbaro extends Heroi {
         this.numerodefalhas = numerodefalhas;
     }
 
-    
     public Barbaro() {
         super();
         this.numerodeExito = 0;
         this.numerodefalhas = 0;
     }
-    
+
     public void ComMachado(Personagem vilao) {
         Armas usar = null;
         int index;
@@ -36,7 +35,7 @@ public class Barbaro extends Heroi {
             index = this.usarArma();
             if (index != 0) {
                 refaz = false;
-                usar = armas.get(index - 1);
+                usar = armas.get(index);
                 if (usar instanceof Machado) {
                     JOptionPane.showMessageDialog(frame, "Uso correto de arma ;-) ");
                 } else {
@@ -46,42 +45,33 @@ public class Barbaro extends Heroi {
                 refaz = true;
             }
         } while (refaz);
-        
+
         if (usar.causarDanos(this, vilao)) {
             JOptionPane.showMessageDialog(frame, "causou dano !!!!");
             JOptionPane.showMessageDialog(frame, vilao.toString());
-            this.numerodeExito+=1;
+            this.numerodeExito += 1;
             this.subirdenivel();
         } else {
             JOptionPane.showMessageDialog(frame, "a Arma falhou !!!!");
-            this.numerodefalhas+=1;
+            this.numerodefalhas += 1;
         }
     }
 
     public void comEspada(Personagem vilao) {
         Armas usar = null;
         int index;
-        boolean refaz;
-        do {
-            System.out.println("usar espada !!!");
-            index = this.usarArma();
-            if (index != 0) {
-                refaz = false;
-                usar = armas.get(index - 1);
-                if (usar instanceof Espada) {
-                    JOptionPane.showMessageDialog(frame, "Uso correto de arma  ;-) ");
-                } else {
-                    JOptionPane.showMessageDialog(frame, "Uso incorreto de armamento  :-( ");
-                }
-            } else {
-                refaz = true;
-            }
-        } while (refaz && usar != null);
-
+        System.out.println("usar espada !!!");
+        index = this.usarArma();
+        usar = armas.get(index);
+        if (usar instanceof Espada) {
+            JOptionPane.showMessageDialog(frame, "Uso correto de arma  ;-) ");
+        } else {
+            JOptionPane.showMessageDialog(frame, "Uso incorreto de armamento  :-( ");
+        }
         if (usar.causarDanos(this, vilao)) {
             JOptionPane.showMessageDialog(frame, "causou dano !!!!");
             JOptionPane.showMessageDialog(frame, vilao.toString());
-            this.numerodeExito+= 1;
+            this.numerodeExito += 1;
             this.subirdenivel();
         } else {
             JOptionPane.showMessageDialog(frame, "a Arma falhou !!!!");
@@ -140,5 +130,5 @@ public class Barbaro extends Heroi {
                 + "numerodeExito=" + numerodeExito + "\n"
                 + "numerodefalhas=" + numerodefalhas + "\n"
                 + super.toString();
-    }    
+    }
 }

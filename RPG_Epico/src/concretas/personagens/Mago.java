@@ -53,40 +53,33 @@ public class Mago extends Heroi {
     }
 
     public void sugralife(Personagem vilao) {
-        Armas usar = null;
+        Armas usar;
         int index;
-        boolean refaz;
-        do {
-            System.out.println("sugar life !!!");
-            index = this.usarArma();
-            if (index != 0) {
-                refaz = false;
-                usar = armas.get(index - 1);
-                if (usar instanceof Cajado) {
-                    JOptionPane.showMessageDialog(frame, "Uso correto de arma ;-) ");
-                    this.setLife((byte) (((Cajado) usar).getDano()/2));
-                } else {
-                    JOptionPane.showMessageDialog(frame, "Uso incorreto de armamento  :-( ");
-                }
-            } else {
-                refaz = true;
-            }
-        } while (refaz);
-        
+        System.out.println("sugar life !!!");
+        index = this.usarArma();
+        usar = armas.get(index);
+        if (usar instanceof Cajado) {
+            JOptionPane.showMessageDialog(frame, "Uso correto de arma ;-) ");
+            this.setLife((byte) (((Cajado) usar).getDano() / 2));
+        } else {
+            JOptionPane.showMessageDialog(frame, "Uso incorreto de armamento  :-( ");
+        }
         if (usar.causarDanos(this, vilao)) {
             JOptionPane.showMessageDialog(frame, "causou dano !!!!");
             JOptionPane.showMessageDialog(frame, vilao.toString());
-            this.fenticoscomefeito+=1;
+            this.fenticoscomefeito += 1;
             this.subirdenivel();
         } else {
             JOptionPane.showMessageDialog(frame, "a Arma falhou !!!!");
-            this.fenticossemefeito+=1;
+            this.fenticossemefeito += 1;
         }
     }
 
     public void golpeespelho(Personagem vilao) {
         vilao.atacar(vilao);
         this.setLife((byte) (this.getLife() - 5));
+        this.fenticossemefeito += 1;
+        this.fenticoscomefeito += 1;
         this.subirdenivel();
     }
 
@@ -116,7 +109,7 @@ public class Mago extends Heroi {
             if (esc != null) {
                 switch (esc) {
                     case "sugar life":
-                        this.golpeespelho(vilao);
+                        this.sugralife(vilao);
                         break;
                     case "Ataque espelho":
                         this.golpeespelho(vilao);
@@ -138,8 +131,8 @@ public class Mago extends Heroi {
     public String toString() {
         return "Mago: \n"
                 + "fenticos com efeito=" + fenticoscomefeito + "\n"
-                + " fenticos sem efeito=" + fenticossemefeito + "\n"+
-                super.toString();
+                + " fenticos sem efeito=" + fenticossemefeito + "\n"
+                + super.toString();
     }
 
 }

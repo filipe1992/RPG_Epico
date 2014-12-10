@@ -38,7 +38,7 @@ public class Espada extends ArmaCorpoACorpo {
 
     @Override
     public boolean causarDanos(Personagem h, Personagem v) {
-        if ((rand.nextInt(100) + 1) % (20 - this.tamanho) == 0) {
+        if ((rand.nextInt(10) + 1) % (20 - this.tamanho) == 0) {
             if (this.dano >= v.getLife()) {
                 System.out.println("voce tera que enferntar muitos outros inimigos ");
                 v.setLife(((byte) 0));
@@ -53,7 +53,7 @@ public class Espada extends ArmaCorpoACorpo {
 
     @Override
     public String toString() {
-        return " Esta Espada possui: " + "\n"
+        return "\nEspada" + "\n"
                 + "tamanho=" + tamanho;
     }
 

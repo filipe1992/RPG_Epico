@@ -58,7 +58,7 @@ public class ArcoEFlecha extends ArmaADistancia {
         } else {
             erro = this.chancesdeerro * 2;
         }
-        if ((rand.nextInt(100) + 1) % erro == 0) {
+        if ((rand.nextInt(10) + 1) % erro == 0) {
             if (this.dano > v.getLife()) {
                 System.out.println("voce venceu esta mas, não me derrotou!!! my name is << Sepol >>");
                 v.setLife((byte) 0);
@@ -77,6 +77,6 @@ public class ArcoEFlecha extends ArmaADistancia {
 
     @Override
     public String toString() {
-        return "seu nivel atual é:" + nivel;
+        return "Arco e flecha\nseu nivel atual é:" + nivel;
     }
 }

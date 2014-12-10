@@ -24,9 +24,10 @@ public class Principal {
     public static Personagem adversario;
 
     public static int numerodebatalhas;
+    
+    public static Locais lugar = new cidades();
 
     public static void main(String[] args) {
-        Locais lugar = new cidades();
         String[] herois = {"Arqueiro", "Barbaro", "Mago"};
         String escolha = (String) JOptionPane.showInputDialog(frame, "Escolha um heroi !!!!", "Heroi", JOptionPane.QUESTION_MESSAGE, null, herois, herois[0]);
         if (escolha == null) {
@@ -48,12 +49,16 @@ public class Principal {
             default:
                 JOptionPane.showMessageDialog(frame, "Escolha um heroi válido !!!! (sepol)");
         }
-        while(true)
-            menu(lugar);
+        int i=1 ;
+        while(i!=0){
+            menu();
+            i = JOptionPane.showConfirmDialog(frame, "deseja sair do jogo ????");
+            
+        }
 
     }
 
-    static void menu(Locais lugar){
+    static void menu(){
         String[] escolha = {"ir para outro lugar","buscar batalha","comprar coisas","usar item"};
         String esc = (String) JOptionPane.showInputDialog(frame, "o que deseja fazer ??", "Menu", JOptionPane.QUESTION_MESSAGE, null, escolha, escolha[0]);
         if (esc == null)
@@ -82,8 +87,11 @@ public class Principal {
                 JOptionPane.showMessageDialog(frame, lugar.toString());
                 break;
             case "buscar batalha":
+                if (!(lugar instanceof cidades)){
                 escolha();
                 batalha(jogador);
+                } else
+                  JOptionPane.showMessageDialog(frame,lugar.toString()+"\n\nVoce não ira encontrar oponentes aqui !!!!!");  
                 break;
             case "comprar coisas":
                 String[] ne = {"Itens","Armas"};
@@ -122,6 +130,7 @@ public class Principal {
                 Principal.adversario = new Necromancer();
                 break;
         }
+        JOptionPane.showMessageDialog(frame,adversario.toString());
     }
 
     public static void batalha(Personagem jogador) {
@@ -129,15 +138,20 @@ public class Principal {
         Principal.numerodebatalhas++;
         int i = JOptionPane.showConfirmDialog(frame, "deseja realmente entrar nessa batalha ????");
         while (jogador.getLife() > 0 && adversario.getLife() > 0 && i == 0) {
-
+            
             jogador.atacar(adversario);
             JOptionPane.showMessageDialog(frame, "Adversario\n" + adversario.toString() + "\n" + jogador.toString());
             adversario.atacar(jogador);
             JOptionPane.showMessageDialog(frame, "Adversario\n" + adversario.toString() + "\n" + jogador.toString());
-            if (JOptionPane.showConfirmDialog(frame, "deseja continuar nessa batalha ????") == 0) {
+            if (JOptionPane.showConfirmDialog(frame, "deseja continuar nessa batalha ????") != 0) {
+                jogador.fugir();
                 i = 1;
             }
         }
+        if (jogador.getLife() <= 0 )
+            JOptionPane.showMessageDialog(frame,"voce perdeu!!!\n e so podera disputar muma batalha novamente quando reestituir o seu life");
+        else
+            JOptionPane.showMessageDialog(frame,"voce não perdeu!!!"); 
 
     }
 

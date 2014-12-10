@@ -58,7 +58,7 @@ public class Cajado extends ArmaADistancia {
             erro = this.chancesdeerro * 2;
             dano1 = (byte) this.dano;
         }
-        if (rand.nextInt(100) % erro == 0) {
+        if (rand.nextInt(10) % erro == 0) {
             if (dano1 > v.getLife()) {
                 System.out.println(/* nome da class + */": a vitoria é minha ");
                 v.setLife((byte) 0);
@@ -77,7 +77,7 @@ public class Cajado extends ArmaADistancia {
 
     @Override
     public String toString() {
-        return super.toString() + "voce possui: " + joiasdoInfinito + " joiasdoInfinito ";
+        return super.toString() + "\nCajado\nvoce possui: " + joiasdoInfinito + " joiasdoInfinito ";
     }
 
 }

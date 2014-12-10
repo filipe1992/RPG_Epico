@@ -40,7 +40,7 @@ public class Machado extends ArmaCorpoACorpo {
 
     @Override
     public boolean causarDanos(Personagem h, Personagem v) {
-        if ((rand.nextInt(100) + 1) % (20 - this.amolacao) == 0) {
+        if ((rand.nextInt(10) + 1) % (20 - this.amolacao) == 0) {
             if (this.dano >= ((Vilao) v).getLife()) {
                 System.out.println("voce tera que enferntar muitos outros inimigos ");
                 v.setLife((byte) 0);
@@ -55,7 +55,7 @@ public class Machado extends ArmaCorpoACorpo {
 
     @Override
     public String toString() {
-        return "Este Machado possui: " + "\n"
+        return "\nMachado\n" + "\n"
                 + "amolacao=" + amolacao;
     }
 

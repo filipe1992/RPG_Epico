@@ -2,7 +2,9 @@ package concretas.itens;
 
 import Interfaces.Itens;
 import Interfaces.Personagem;
+import static Interfaces.Personagem.frame;
 import abstratas.Heroi;
+import javax.swing.JOptionPane;
 
 public class Armaduras implements Itens {
 
@@ -21,68 +23,65 @@ public class Armaduras implements Itens {
         boolean nsair;
         System.out.println("seu nivel é " + ((Heroi) p).getNivel());
         System.out.println("e possui " + p.getDinheiro() + " R$");
-        do {
-            System.out.println("escolha o nivel de proteção:\n"
-                    + "1<- 20 -- 300,00 R$\n"
-                    + "2<- 40 -- 600,00 R$\n"
-                    + "3<- 60 -- 900.00 R$\n"
-                    + "4<- 80 -- 1200,00 R$\n"
-                    + "5<- 100 -- 1500,00 R$: ");
-            switch (in.nextInt()) {
-                case 1:
-                    if (((Heroi) p).getDinheiro() > 300) {
+        String[] escolha = {"escolha o nivel de Armadura","20 -- 30,00 R$","40 -- 60,00 R$","60 -- 90.00 R$","80 -- 120,00 R$\n","100 -- 150,00 R$"};
+            String esc = (String) JOptionPane.showInputDialog(frame, "Escolha uma armadura !!!!", "Heroi", JOptionPane.QUESTION_MESSAGE, null, escolha, escolha[0]);
+            if (esc == null)
+                esc="0";
+            switch (esc) {
+                case "20 -- 30,00 R$":
+                    if (((Heroi) p).getDinheiro() > 30) {
                         System.out.println("Você adquiriu uma armadura de nível 20% e gastou 300,00 R$ seu dinheiro atual é: " + (((Heroi) p).getNivel() - 300) + " R$.");
-                        p.setDinheiro(p.getDinheiro() - 300);
+                        p.setDinheiro(p.getDinheiro() - 30);
                         this.protecao = 20;
                     } else {
                         System.out.println("Você não possui dinheiro suficiente para esta compra !!!!");
                     }
                     nsair = false;
                     break;
-                case 2:
-                    if (((Heroi) p).getDinheiro() > 600) {
+                case "40 -- 60,00 R$":
+                    if (((Heroi) p).getDinheiro() > 60) {
                         System.out.println("Você adquiriu uma armadura de nível 40% e gastou 600,00 R$ seu dinheiro atual é: " + (((Heroi) p).getNivel() - 600) + " R$.");
-                        p.setDinheiro(p.getDinheiro()- 600);
+                        p.setDinheiro(p.getDinheiro()- 60);
                         this.protecao = 40;
                     } else {
                         System.out.println("Você não possui dinheiro suficiente para esta compra !!!!");
                     }
                     nsair = false;
                     break;
-                case 3:
-                    if (p.getDinheiro() > 900) {
+                case "60 -- 90.00 R$":
+                    if (p.getDinheiro() > 90) {
                         System.out.println("Você adquiriu uma armadura de nível 60% e gastou 900,00 R$ seu dinheiro atual é: " + (((Heroi) p).getNivel() - 900) + " R$.");
-                        p.setDinheiro(p.getDinheiro() - 900);
+                        p.setDinheiro(p.getDinheiro() - 90);
                         this.protecao = 60;
                     } else {
                         System.out.println("Você não possui dinheiro suficiente para esta compra !!!!");
                     }
                     nsair = false;
                     break;
-                case 4:
-                    if (p.getDinheiro() > 1200) {
+                case "80 -- 120,00 R$":
+                    if (p.getDinheiro() > 120) {
                         System.out.println("Você adquiriu uma armadura de nível 80% e gastou 1200,00 R$ seu dinheiro atual é: " + (((Heroi) p).getNivel() - 1200) + " R$.");
-                        p.setDinheiro(p.getDinheiro() - 1200);
+                        p.setDinheiro(p.getDinheiro() - 120);
                         this.protecao = 80;
                     } else {
                         System.out.println("Você não possui dinheiro suficiente para esta compra !!!!");
                     }
                     nsair = false;
                     break;
-                case 5:
-                    if (p.getDinheiro() > 1500) {
+                case "100 -- 150,00 R$":
+                    if (p.getDinheiro() > 150) {
                         System.out.println("Você adquiriu uma armadura de nível 100% e gastou 1500,00 R$ seu dinheiro atual é: " + (((Heroi) p).getNivel() - 1500) + " R$.");
-                        p.setDinheiro(p.getDinheiro() - 1500);
+                        p.setDinheiro(p.getDinheiro() - 150);
                         this.protecao = 100;
                     } else {
                         System.out.println("Você não possui dinheiro suficiente para esta compra !!!!");
                     }
                     nsair = false;
                     break;
-                case 13:
-                    if (p.getDinheiro() > 1500) {
+                case "escolha o nivel de Armadura":
+                    if (p.getDinheiro() > 150) {
                         System.out.println("Você adquiriu uma armadura de nível 200% e gastou 1000,00 R$ seu dinheiro atual é: " + (((Heroi) p).getNivel() - 1000) + " R$.");
-                        p.setDinheiro(p.getDinheiro()- 1000);
+                        p.setDinheiro(p.getDinheiro()- 100);
                         this.protecao = 200;
                     } else {
                         System.out.println("Você não possui dinheiro suficiente para esta compra !!!!");
@@ -93,8 +92,7 @@ public class Armaduras implements Itens {
                     System.out.println("digite um valor válido!!!!");
                     nsair = true;
             }
-        } while (nsair);
-        System.out.println("Transação realisada com sucesso  ;-)");
+        System.out.println("Tranzação realisada com sucesso  ;-)");
     }
 
     /**

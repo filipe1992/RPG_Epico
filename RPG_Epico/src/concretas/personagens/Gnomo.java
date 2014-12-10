@@ -29,10 +29,10 @@ public class Gnomo extends Vilao {
     }
 
     public void flechacomum(Personagem heroi) {
-        Armas usar = new ArcoEFlecha();
+        Armas usar;
 
         System.out.println("usar flecha comum !!!");
-        usar = armas.get(rand.nextInt(armas.size()));
+        usar = armas.get(0);
         if (usar instanceof ArcoEFlecha) {
             JOptionPane.showMessageDialog(frame, "seu inimigo escolheu corretamente a arma :-( ");
         } else {
@@ -51,24 +51,16 @@ public class Gnomo extends Vilao {
     }
 
     public void flechaComFogo(Personagem heroi) {
-        Armas usar = new ArcoEFlecha();
+        Armas usar;
         int index;
-        boolean refaz;
-        do {
-            System.out.println("usar flecha com veneno !!!");
-            index = rand.nextInt(armas.size());
-            if (index != 0) {
-                refaz = false;
-                usar = armas.get(index - 1);
-                if (usar instanceof ArcoEFlecha) {
-                    JOptionPane.showMessageDialog(frame, "Uso correto de arma ;-) ");
-                } else {
-                    JOptionPane.showMessageDialog(frame, "Uso incorreto de armamento  :-( ");
-                }
-            } else {
-                refaz = true;
-            }
-        } while (refaz);
+        System.out.println("usar flecha com Fogo !!!");
+        index = rand.nextInt(armas.size());
+        usar = armas.get(index);
+        if (usar instanceof ArcoEFlecha) {
+            JOptionPane.showMessageDialog(frame, "Uso correto de arma ;-) ");
+        } else {
+            JOptionPane.showMessageDialog(frame, "Uso incorreto de armamento  :-( ");
+        }
         this.life -= 3;
         JOptionPane.showMessageDialog(frame, " Droga me queimei @#%*&!$sepol !!!!  :-( ");
         if (usar.causarDanos(this, heroi)) {

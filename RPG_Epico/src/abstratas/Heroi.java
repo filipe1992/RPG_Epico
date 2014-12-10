@@ -48,6 +48,7 @@ public abstract class Heroi implements Personagem {
         this.lifemaximo = 100;
         this.nivel = 0;
         armas = new ArrayList<>();
+        itens = new ArrayList<>();
     }
 
     //funções gets{
@@ -131,16 +132,19 @@ public abstract class Heroi implements Personagem {
         boolean nsair;
         System.out.println("dinheiro: " + dinheiro);
         do {
-            System.out.println("digite o item a ser comprado: ");
-            switch (in.nextInt()) {
-                case 1:
+            String[] esc = {"digite o item a ser comprado: ","*********Armaduras*******","**********Remedios*********"};
+            String escolha = (String) JOptionPane.showInputDialog(frame, "Escolha !!!!", "Heroi", JOptionPane.QUESTION_MESSAGE, null, esc, esc[0]);
+            if (escolha == null)
+                escolha="0";
+            switch (escolha) {
+                case "*********Armaduras*******":
                     System.out.println("*********Armaduras*******");
                     novo = new Armaduras();
                     novo.escolher(this);
                     itens.add(novo);
                     nsair = false;
                     break;
-                case 2:
+                case "**********Remedios*********":
                     System.out.println("**********Remedios*********");
                     novo = new Remedios();
                     novo.escolher(this);
@@ -201,10 +205,9 @@ public abstract class Heroi implements Personagem {
     @Override
     public int usarArma() {
         String escarmas[];
-        escarmas = new String[armas.size()+1];
-        escarmas[0] = "0 Escolha uma arma !!!!";
-        for (int i = 1; i <= armas.size(); i++) {
-            escarmas[i] = i + " " + armas.get(i-1).toString();
+        escarmas = new String[armas.size()];
+        for (int i = 0; i < armas.size(); i++) {
+            escarmas[i] = i + " " + armas.get(i).toString();
         }
         String esc = (String) JOptionPane.showInputDialog(frame,"Qual arma voce deseja usar ?? ","Arma",JOptionPane.QUESTION_MESSAGE,null,escarmas,escarmas[0]);
         if (esc == null)
@@ -240,11 +243,11 @@ public abstract class Heroi implements Personagem {
     @Override
     public String toString() {
         return " Este Heroi possui: \n"
-                + "niveldebondade=" + niveldebondade
-                + "life=" + life
-                + "\nlifemaximo=" + lifemaximo + "\n"
-                + "nivel=" + nivel + "\n"
-                + "armadura=" + armadura;
+                + "niveldebondade= " + niveldebondade
+                + "\nlife= " + life
+                + "\nlifemaximo= " + lifemaximo + "\n"
+                + "nivel= " + nivel + "\n"
+                + "armadura= " + armadura;
     }
 
 }

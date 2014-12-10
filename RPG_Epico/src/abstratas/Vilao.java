@@ -26,6 +26,7 @@ public abstract class Vilao implements Personagem {
         this.niveldemaldade = 1;
         this.dinheiro = (this.getNiveldemaldade() * 2);
         this.life = 100;
+        armas = new ArrayList<>();
     }
 
     public Vilao(int niveldemaldade, float dinheiro) {
@@ -75,6 +76,14 @@ public abstract class Vilao implements Personagem {
             return 1;
         }
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "\nO vilao possui\n"+
+                "maldade= "+ this.niveldemaldade + "\n"
+                + "dinheiro= " + dinheiro + "\n"
+                +"Life= "+ life;
     }
 
 }

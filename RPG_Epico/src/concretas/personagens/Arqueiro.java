@@ -26,56 +26,41 @@ public class Arqueiro extends Heroi {
     }
 
     public void flechaComVeneno(Personagem vilao) {
-        Armas usar = null;
+        Armas usar;
         int index;
-        boolean refaz;
-        do {
-            System.out.println("usar flecha com veneno !!!");
-            index = this.usarArma();
-            if (index != 0) {
-                refaz = false;
-                usar = armas.get(index - 1);
-                if (usar instanceof ArcoEFlecha) {
-                    JOptionPane.showMessageDialog(frame, "Uso correto de arma ;-) ");
-                } else {
-                    JOptionPane.showMessageDialog(frame, "Uso incorreto de armamento  :-( ");
-                }
-            } else {
-                refaz = true;
-            }
-        } while (refaz);
+        System.out.println("usar flecha com veneno !!!");
+        index = this.usarArma();
+
+        usar = armas.get(index);
+        if (usar instanceof ArcoEFlecha) {
+            JOptionPane.showMessageDialog(frame, "Uso correto de arma ;-) ");
+        } else {
+            JOptionPane.showMessageDialog(frame, "Uso incorreto de armamento  :-( ");
+        }
         this.life -= 3;
         if (usar.causarDanos(this, vilao)) {
             JOptionPane.showMessageDialog(frame, "causou dano !!!!");
             JOptionPane.showMessageDialog(frame, vilao.toString());
-            this.acertos+=1;
+            this.acertos += 1;
             vilao.setLife((byte) (vilao.getLife() - 5));
         } else {
             JOptionPane.showMessageDialog(frame, "a Arma falhou !!!!");
-            this.erros+=1;
+            this.erros += 1;
         }
 
     }
 
     public void FlechaComum(Personagem vilao) {
-        Armas usar = null;
+        Armas usar;
         int index;
-        boolean refaz;
-        do {
-            System.out.println("usar flecha comum !!!");
-            index = this.usarArma();
-            if (index != 0) {
-                refaz = false;
-                usar = armas.get(index - 1);
-                if (usar instanceof ArcoEFlecha) {
-                    JOptionPane.showMessageDialog(frame, "Uso correto de arma ;-) ");
-                } else {
-                    JOptionPane.showMessageDialog(frame, "Uso incorreto de armamento  :-( ");
-                }
-            } else {
-                refaz = true;
-            }
-        } while (refaz && usar != null);
+        System.out.println("usar flecha comum !!!");
+        index = this.usarArma();
+        usar = armas.get(index);
+        if (usar instanceof ArcoEFlecha) {
+            JOptionPane.showMessageDialog(frame, "Uso correto de arma ;-) ");
+        } else {
+            JOptionPane.showMessageDialog(frame, "Uso incorreto de armamento  :-( ");
+        }
 
         if (usar.causarDanos(this, vilao)) {
             JOptionPane.showMessageDialog(frame, "causou dano !!!!");
@@ -135,8 +120,7 @@ public class Arqueiro extends Heroi {
 
     @Override
     public String toString() {
-        return "Arqueiro: " + "\nAcertos=" + acertos + "\nErros=" + erros + "\n"+super.toString();
+        return "Arqueiro: " + "\nAcertos=" + acertos + "\nErros=" + erros + "\n" + super.toString();
     }
 
-    
 }

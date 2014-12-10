@@ -31,23 +31,13 @@ public class Necromancer extends Vilao {
 
     public void maldicaofinal(Personagem heroi) {
         Armas usar = null;
-        int index;
-        boolean refaz;
-        do {
-            System.out.println("maldição final !!!");
-            index = this.usarArma();
-            if (index != 0) {
-                refaz = false;
-                usar = armas.get(index - 1);
-                if (usar instanceof Cajado) {
-                    JOptionPane.showMessageDialog(frame, "Uso correto de arma ;-) ");
-                } else {
-                    JOptionPane.showMessageDialog(frame, "Uso incorreto de armamento  :-( ");
-                }
-            } else {
-                refaz = true;
-            }
-        } while (refaz);
+        System.out.println("maldição final !!!");
+        usar = armas.get(0);
+        if (usar instanceof Cajado) {
+            JOptionPane.showMessageDialog(frame, "Uso correto de arma ;-) ");
+        } else {
+            JOptionPane.showMessageDialog(frame, "Uso incorreto de armamento  :-( ");
+        }
 
         if (usar.causarDanos(this, heroi)) {
             JOptionPane.showMessageDialog(frame, "causou dano !!!!");
@@ -63,7 +53,7 @@ public class Necromancer extends Vilao {
     public void canificina(Personagem heroi) {
         Armas usar = null;
         System.out.println("Carnificina !!!");
-        usar = armas.get(rand.nextInt(2));
+        usar = armas.get(rand.nextInt(1));
         if (usar instanceof ArcoEFlecha) {
             JOptionPane.showMessageDialog(frame, "Uso correto de arma ;-) ");
         } else {
@@ -96,7 +86,7 @@ public class Necromancer extends Vilao {
 
     @Override
     public void atacar(Personagem outro) {
-        switch(rand.nextInt(2)){
+        switch (rand.nextInt(2)) {
             case 0:
                 this.maldicaofinal(outro);
                 break;
@@ -116,8 +106,8 @@ public class Necromancer extends Vilao {
         return "Necromancer: " + "\n"
                 + "energia = " + energia + "\n"
                 + "maldicoes com efeito = " + maldicoescomefeito + "\n"
-                + "maldicoes sem efeito = " + maldicoessemefeito + 
-                super.toString();
+                + "maldicoes sem efeito = " + maldicoessemefeito + "\n"
+                + super.toString();
     }
-    
+
 }
