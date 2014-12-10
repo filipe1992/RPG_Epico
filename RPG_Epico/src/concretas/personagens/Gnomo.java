@@ -22,7 +22,7 @@ public class Gnomo extends Vilao {
 
     public Gnomo() {
         super();
-        this.poderTerreno = 0;
+        this.poderTerreno = rand.nextInt(100);
         this.acertos = 0;
         this.erros = 0;
         this.armas.add(new ArcoEFlecha());

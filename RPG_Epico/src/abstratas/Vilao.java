@@ -24,7 +24,7 @@ public abstract class Vilao implements Personagem {
 
     public Vilao() {
         this.niveldemaldade = 1;
-        this.dinheiro = (this.getNiveldemaldade() * 2);
+        this.dinheiro = rand.nextInt(100);
         this.life = 100;
         armas = new ArrayList<>();
     }

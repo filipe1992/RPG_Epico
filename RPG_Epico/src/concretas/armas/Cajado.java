@@ -13,7 +13,7 @@ public class Cajado extends ArmaADistancia {
 
     public Cajado() {
         super();
-        this.setJoiasdoInfinito(0);
+        this.setJoiasdoInfinito(1);
     }
 
     public Cajado(int dano, byte chancesdeerro, int joiasdoinfinito) {
@@ -26,8 +26,8 @@ public class Cajado extends ArmaADistancia {
     }
 
     public final void setJoiasdoInfinito(int joiasdoInfinito) {
-        if (joiasdoInfinito < 0) {
-            joiasdoInfinito = 0;
+        if (joiasdoInfinito <= 0) {
+            joiasdoInfinito = 1;
         }
         this.joiasdoInfinito = joiasdoInfinito;
     }

@@ -24,7 +24,7 @@ public class Principal {
     public static Personagem adversario;
 
     public static int numerodebatalhas;
-    
+
     public static Locais lugar = new cidades();
 
     public static void main(String[] args) {
@@ -49,28 +49,28 @@ public class Principal {
             default:
                 JOptionPane.showMessageDialog(frame, "Escolha um heroi válido !!!! (sepol)");
         }
-        int i=1 ;
-        while(i!=0){
-            menu();
-            i = JOptionPane.showConfirmDialog(frame, "deseja sair do jogo ????");
-            
-        }
+        while (menu() == 0)
+            System.out.println("=============");
+        
+        System.exit(0);
 
     }
 
-    static void menu(){
-        String[] escolha = {"ir para outro lugar","buscar batalha","comprar coisas","usar item"};
+    static int menu() {
+        String[] escolha = {"ir para outro lugar", "buscar batalha", "comprar coisas", "usar item", "minhas estatisticas","sair..."};
         String esc = (String) JOptionPane.showInputDialog(frame, "o que deseja fazer ??", "Menu", JOptionPane.QUESTION_MESSAGE, null, escolha, escolha[0]);
-        if (esc == null)
+        if (esc == null) {
             esc = "0";
-        switch(esc){
+        }
+        switch (esc) {
             case "ir para outro lugar":
                 JOptionPane.showMessageDialog(frame, lugar.saindo());
-                String[] nescolha = {"Cidade","Deserto","floresta"};
+                String[] nescolha = {"Cidade", "Deserto", "floresta"};
                 esc = (String) JOptionPane.showInputDialog(frame, "Onde voce quer ir ???", "Menu", JOptionPane.QUESTION_MESSAGE, null, nescolha, nescolha[0]);
-                if (esc == null)
+                if (esc == null) {
                     esc = "0";
-                switch(esc){
+                }
+                switch (esc) {
                     case "Cidade":
                         lugar = new cidades();
                         break;
@@ -81,43 +81,50 @@ public class Principal {
                         lugar = new Florestas();
                         break;
                     default:
-                        JOptionPane.showMessageDialog(frame," vai ficar no mesmo lugar (sepol)");
+                        JOptionPane.showMessageDialog(frame, " vai ficar no mesmo lugar (sepol)");
                 }
                 JOptionPane.showMessageDialog(frame, lugar.chegando());
                 JOptionPane.showMessageDialog(frame, lugar.toString());
                 break;
             case "buscar batalha":
-                if (!(lugar instanceof cidades)){
-                escolha();
-                batalha(jogador);
-                } else
-                  JOptionPane.showMessageDialog(frame,lugar.toString()+"\n\nVoce não ira encontrar oponentes aqui !!!!!");  
+                if (!(lugar instanceof cidades)) {
+                    escolha();
+                    batalha(jogador);
+                } else {
+                    JOptionPane.showMessageDialog(frame, lugar.toString() + "\n\nVoce não ira encontrar oponentes aqui !!!!!");
+                }
                 break;
             case "comprar coisas":
-                String[] ne = {"Itens","Armas"};
+                String[] ne = {"Itens", "Armas"};
                 String esc1 = (String) JOptionPane.showInputDialog(frame, "Onde voce quer ir ???", "Menu", JOptionPane.QUESTION_MESSAGE, null, ne, ne[0]);
-                if (esc1 == null)
+                if (esc1 == null) {
                     esc1 = "0";
-        switch (esc1) {
-            case "Itens":
-                ((Heroi) jogador).comprarItens();
-                break;
-            case "Armas":
-                ((Heroi) jogador).comprarArma();
-                break;
-            default:
-                JOptionPane.showMessageDialog(frame, "valor invalido !!!");
-        }
+                }
+                switch (esc1) {
+                    case "Itens":
+                        ((Heroi) jogador).comprarItens();
+                        break;
+                    case "Armas":
+                        ((Heroi) jogador).comprarArma();
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(frame, "valor invalido !!!");
+                }
                 break;
             case "usar item":
                 ((Heroi) jogador).usarItem();
                 break;
+            case "minhas estatisticas":
+                JOptionPane.showMessageDialog(frame, jogador.toString());
+                break;
+            case "sair...":
+                return 1;
             default:
-                JOptionPane.showMessageDialog(frame,"nao escolheu uma opçao valida");
+                JOptionPane.showMessageDialog(frame, "nao escolheu uma opçao valida");
         }
+        return 0;
     }
-    
-    
+
     public static void escolha() {
         switch (rand.nextInt(3)) {
             case 0:
@@ -130,7 +137,7 @@ public class Principal {
                 Principal.adversario = new Necromancer();
                 break;
         }
-        JOptionPane.showMessageDialog(frame,adversario.toString());
+        JOptionPane.showMessageDialog(frame, adversario.toString());
     }
 
     public static void batalha(Personagem jogador) {
@@ -138,7 +145,7 @@ public class Principal {
         Principal.numerodebatalhas++;
         int i = JOptionPane.showConfirmDialog(frame, "deseja realmente entrar nessa batalha ????");
         while (jogador.getLife() > 0 && adversario.getLife() > 0 && i == 0) {
-            
+
             jogador.atacar(adversario);
             JOptionPane.showMessageDialog(frame, "Adversario\n" + adversario.toString() + "\n" + jogador.toString());
             adversario.atacar(jogador);
@@ -148,10 +155,13 @@ public class Principal {
                 i = 1;
             }
         }
-        if (jogador.getLife() <= 0 )
-            JOptionPane.showMessageDialog(frame,"voce perdeu!!!\n e so podera disputar muma batalha novamente quando reestituir o seu life");
-        else
-            JOptionPane.showMessageDialog(frame,"voce não perdeu!!!"); 
+        if (jogador.getLife() <= 0) {
+            JOptionPane.showMessageDialog(frame, "voce perdeu!!!\n e so podera disputar muma batalha novamente quando reestituir o seu life");
+        } else {
+            JOptionPane.showMessageDialog(frame, "voce não perdeu!!!");
+            if (adversario.getLife() == 0)
+                jogador.setDinheiro(jogador.getDinheiro() + adversario.getDinheiro());
+        }
 
     }
 

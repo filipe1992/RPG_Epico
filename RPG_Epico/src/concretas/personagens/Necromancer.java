@@ -23,7 +23,7 @@ public class Necromancer extends Vilao {
 
     public Necromancer() {
         super();
-        this.energia = 0;
+        this.energia = rand.nextInt(100);
         this.maldicoescomefeito = 0;
         this.maldicoessemefeito = 0;
         this.armas.add(new Cajado());

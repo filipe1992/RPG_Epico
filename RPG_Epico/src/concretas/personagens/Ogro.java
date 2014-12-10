@@ -56,7 +56,7 @@ public class Ogro extends Vilao {
 
     public Ogro() {
         super();
-        this.poderdastrevas = 0;
+        this.poderdastrevas = rand.nextInt(100);
         this.exitos = 0;
         this.falhas = 0;
         this.armas.add(new Machado());

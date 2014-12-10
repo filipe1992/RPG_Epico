@@ -132,10 +132,11 @@ public abstract class Heroi implements Personagem {
         boolean nsair;
         System.out.println("dinheiro: " + dinheiro);
         do {
-            String[] esc = {"digite o item a ser comprado: ","*********Armaduras*******","**********Remedios*********"};
+            String[] esc = {"digite o item a ser comprado: ", "*********Armaduras*******", "**********Remedios*********"};
             String escolha = (String) JOptionPane.showInputDialog(frame, "Escolha !!!!", "Heroi", JOptionPane.QUESTION_MESSAGE, null, esc, esc[0]);
-            if (escolha == null)
-                escolha="0";
+            if (escolha == null) {
+                escolha = "0";
+            }
             switch (escolha) {
                 case "*********Armaduras*******":
                     System.out.println("*********Armaduras*******");
@@ -160,14 +161,20 @@ public abstract class Heroi implements Personagem {
     }
 
     public void usarItem() {
-        boolean nsair;
+        boolean nsair=false;
 
         System.out.println("digite o item a ser ultilizado: ");
         do {
-            System.out.println("1<- para remedios\n"
-                    + "2<- para armadura: ");
-            switch (in.nextInt()) {
-                case 1:
+            String[] vet1 = {"1<- para remedios", "2<- para armadura"};
+            String escolha = (String) JOptionPane.showInputDialog(frame, "Escolha um heroi !!!!", "Heroi", JOptionPane.QUESTION_MESSAGE, null, vet1, vet1[0]);
+            if (escolha == null) {
+                escolha = "0";
+            }
+            if (itens.isEmpty())
+                        JOptionPane.showMessageDialog(frame, "Voce não possui Itens !!!! (sepol)");
+            else
+            switch (escolha) {
+                case "1<- para remedios":
                     System.out.println("Voce possui os seguintes remedios: ");
                     for (int i = 0; i < itens.size(); i++) {
                         if (itens.get(i) instanceof Remedios) {
@@ -177,7 +184,7 @@ public abstract class Heroi implements Personagem {
                     }
                     nsair = false;
                     break;
-                case 2:
+                case "2<- para armadura":
                     System.out.println("Voce possui as seguintes armaduras: ");
                     for (int i = 0; i < itens.size(); i++) {
                         if (itens.get(i) instanceof Armaduras) {
@@ -192,11 +199,12 @@ public abstract class Heroi implements Personagem {
                     nsair = true;
             }
         } while (nsair);
-
-        System.out.println("digite o codigo do que voce quer usar: ");
-        int escolha = in.nextInt();
-        itens.get(escolha).usar(this);
-        itens.remove(escolha);
+        if (!(itens.isEmpty())){
+            System.out.println("digite o codigo do que voce quer usar: ");
+            int escolha = in.nextInt();
+            itens.get(escolha).usar(this);
+            itens.remove(escolha);
+        }
     }
 
     /**
@@ -209,35 +217,36 @@ public abstract class Heroi implements Personagem {
         for (int i = 0; i < armas.size(); i++) {
             escarmas[i] = i + " " + armas.get(i).toString();
         }
-        String esc = (String) JOptionPane.showInputDialog(frame,"Qual arma voce deseja usar ?? ","Arma",JOptionPane.QUESTION_MESSAGE,null,escarmas,escarmas[0]);
-        if (esc == null)
+        String esc = (String) JOptionPane.showInputDialog(frame, "Qual arma voce deseja usar ?? ", "Arma", JOptionPane.QUESTION_MESSAGE, null, escarmas, escarmas[0]);
+        if (esc == null) {
             return 0;
-        return (((int) esc.charAt(0)) -48);
+        }
+        return (((int) esc.charAt(0)) - 48);
     }
-    
-    public void comprarArma(){
-        String[] escolha ={"Arco e Flecha","Cajado","Espada","Machado"};
-       String esc = (String) JOptionPane.showInputDialog(frame,"Qual arma voce deseja comprar ?? ","Armas",JOptionPane.QUESTION_MESSAGE,null,escolha,escolha[0]);
-       if (esc == null){
-           esc = "0";
-       }
-       switch(esc){
-           case "Arco e Flecha":
-               armas.add(new ArcoEFlecha());
-               break;
-           case "Cajado":
-               armas.add(new Cajado());
-               break;
-           case "Espada":
-               armas.add(new Espada());
-               break;
-           case "Machado":
-               armas.add(new Machado());
-               break;
-           default:
-               JOptionPane.showMessageDialog(frame, "Digite um valor valido...");
-               
-       }
+
+    public void comprarArma() {
+        String[] escolha = {"Arco e Flecha", "Cajado", "Espada", "Machado"};
+        String esc = (String) JOptionPane.showInputDialog(frame, "Qual arma voce deseja comprar ?? ", "Armas", JOptionPane.QUESTION_MESSAGE, null, escolha, escolha[0]);
+        if (esc == null) {
+            esc = "0";
+        }
+        switch (esc) {
+            case "Arco e Flecha":
+                armas.add(new ArcoEFlecha());
+                break;
+            case "Cajado":
+                armas.add(new Cajado());
+                break;
+            case "Espada":
+                armas.add(new Espada());
+                break;
+            case "Machado":
+                armas.add(new Machado());
+                break;
+            default:
+                JOptionPane.showMessageDialog(frame, "Digite um valor valido...");
+
+        }
     }
 
     @Override
