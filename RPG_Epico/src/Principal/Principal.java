@@ -57,7 +57,7 @@ public class Principal {
     }
 
     static int menu() {
-        String[] escolha = {"ir para outro lugar", "buscar batalha", "comprar coisas", "usar item", "minhas estatisticas","sair..."};
+        String[] escolha = {"ir para outro lugar", "buscar batalha", "comprar coisas", "usar item", "minhas estatisticas","melhorar Armas","sair..."};
         String esc = (String) JOptionPane.showInputDialog(frame, "o que deseja fazer ??", "Menu", JOptionPane.QUESTION_MESSAGE, null, escolha, escolha[0]);
         if (esc == null) {
             esc = "0";
@@ -95,6 +95,7 @@ public class Principal {
                 }
                 break;
             case "comprar coisas":
+                if (lugar instanceof cidades){
                 String[] ne = {"Itens", "Armas"};
                 String esc1 = (String) JOptionPane.showInputDialog(frame, "Onde voce quer ir ???", "Menu", JOptionPane.QUESTION_MESSAGE, null, ne, ne[0]);
                 if (esc1 == null) {
@@ -110,12 +111,20 @@ public class Principal {
                     default:
                         JOptionPane.showMessageDialog(frame, "valor invalido !!!");
                 }
+                }else
+                    JOptionPane.showMessageDialog(frame, "voce não esta na cidade !!!");
                 break;
             case "usar item":
                 ((Heroi) jogador).usarItem();
                 break;
             case "minhas estatisticas":
                 JOptionPane.showMessageDialog(frame, jogador.toString());
+                break;
+            case "melhorar Armas":
+                if (Heroi.getArmas().isEmpty())
+                    JOptionPane.showMessageDialog(frame, "Compre uma arma primeiro");
+                else
+                    Heroi.getArmas().get(jogador.usarArma()).subirDeNivel(jogador);
                 break;
             case "sair...":
                 return 1;

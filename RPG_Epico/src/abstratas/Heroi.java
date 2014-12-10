@@ -161,7 +161,7 @@ public abstract class Heroi implements Personagem {
     }
 
     public void usarItem() {
-        boolean nsair=false;
+        boolean nsair = false;
 
         System.out.println("digite o item a ser ultilizado: ");
         do {
@@ -170,36 +170,37 @@ public abstract class Heroi implements Personagem {
             if (escolha == null) {
                 escolha = "0";
             }
-            if (itens.isEmpty())
-                        JOptionPane.showMessageDialog(frame, "Voce não possui Itens !!!! (sepol)");
-            else
-            switch (escolha) {
-                case "1<- para remedios":
-                    System.out.println("Voce possui os seguintes remedios: ");
-                    for (int i = 0; i < itens.size(); i++) {
-                        if (itens.get(i) instanceof Remedios) {
-                            System.out.println("Codigo: " + i);
-                            System.out.println(itens.get(i));
+            if (itens.isEmpty()) {
+                JOptionPane.showMessageDialog(frame, "Voce não possui Itens !!!! (sepol)");
+            } else {
+                switch (escolha) {
+                    case "1<- para remedios":
+                        System.out.println("Voce possui os seguintes remedios: ");
+                        for (int i = 0; i < itens.size(); i++) {
+                            if (itens.get(i) instanceof Remedios) {
+                                System.out.println("Codigo: " + i);
+                                System.out.println(itens.get(i));
+                            }
                         }
-                    }
-                    nsair = false;
-                    break;
-                case "2<- para armadura":
-                    System.out.println("Voce possui as seguintes armaduras: ");
-                    for (int i = 0; i < itens.size(); i++) {
-                        if (itens.get(i) instanceof Armaduras) {
-                            System.out.println("Codigo: " + i);
-                            System.out.println(itens.get(i));
+                        nsair = false;
+                        break;
+                    case "2<- para armadura":
+                        System.out.println("Voce possui as seguintes armaduras: ");
+                        for (int i = 0; i < itens.size(); i++) {
+                            if (itens.get(i) instanceof Armaduras) {
+                                System.out.println("Codigo: " + i);
+                                System.out.println(itens.get(i));
+                            }
                         }
-                    }
-                    nsair = false;
-                    break;
-                default:
-                    System.out.println("digite um valor valido!!!!");
-                    nsair = true;
+                        nsair = false;
+                        break;
+                    default:
+                        System.out.println("digite um valor valido!!!!");
+                        nsair = true;
+                }
             }
         } while (nsair);
-        if (!(itens.isEmpty())){
+        if (!(itens.isEmpty())) {
             System.out.println("digite o codigo do que voce quer usar: ");
             int escolha = in.nextInt();
             itens.get(escolha).usar(this);
@@ -232,16 +233,38 @@ public abstract class Heroi implements Personagem {
         }
         switch (esc) {
             case "Arco e Flecha":
-                armas.add(new ArcoEFlecha());
+                if (this.getDinheiro() >= 10) {
+                    armas.add(new ArcoEFlecha());
+                    this.setDinheiro(this.getDinheiro() - 10);
+                } else {
+                    JOptionPane.showMessageDialog(frame, "não possui dinheiro para isso");
+                }
+
                 break;
             case "Cajado":
-                armas.add(new Cajado());
+                if (this.getDinheiro() >= 10) {
+                    armas.add(new Cajado());
+                    this.setDinheiro(this.getDinheiro() - 10);
+                } else {
+                    JOptionPane.showMessageDialog(frame, "não possui dinheiro para isso");
+                }
                 break;
             case "Espada":
+                if (this.getDinheiro() >= 10) {
+                    armas.add(new Espada());
+                    this.setDinheiro(this.getDinheiro() - 10);
+                } else {
+                    JOptionPane.showMessageDialog(frame, "não possui dinheiro para isso");
+                }
                 armas.add(new Espada());
                 break;
             case "Machado":
-                armas.add(new Machado());
+                if (this.getDinheiro() >= 10) {
+                    armas.add(new Machado());
+                    this.setDinheiro(this.getDinheiro() - 10);
+                } else {
+                    JOptionPane.showMessageDialog(frame, "não possui dinheiro para isso");
+                }
                 break;
             default:
                 JOptionPane.showMessageDialog(frame, "Digite um valor valido...");
@@ -256,7 +279,8 @@ public abstract class Heroi implements Personagem {
                 + "\nlife= " + life
                 + "\nlifemaximo= " + lifemaximo + "\n"
                 + "nivel= " + nivel + "\n"
-                + "armadura= " + armadura;
+                + "armadura= " + armadura + "\n"
+                + "Dinheiro= " + dinheiro;
     }
 
 }

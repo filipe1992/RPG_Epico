@@ -64,6 +64,8 @@ public abstract class Vilao implements Personagem {
 
     @Override
     public void setLife(byte life) {
+        if (life <= 0)
+            life = 0;
         this.life = life;
     }
 

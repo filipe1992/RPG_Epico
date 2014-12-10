@@ -60,7 +60,7 @@ public class Mago extends Heroi {
         usar = armas.get(index);
         if (usar instanceof Cajado) {
             JOptionPane.showMessageDialog(frame, "Uso correto de arma ;-) ");
-            this.setLife((byte) (((Cajado) usar).getDano() / 2));
+            this.setLife((byte) (this.getLife() + ((Cajado) usar).getDano() / 2));
         } else {
             JOptionPane.showMessageDialog(frame, "Uso incorreto de armamento  :-( ");
         }
