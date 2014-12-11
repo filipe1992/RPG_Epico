@@ -79,4 +79,20 @@ public class ArcoEFlecha extends ArmaADistancia {
     public String toString() {
         return "Arco e flecha\nseu nivel atual é:" + nivel;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ArcoEFlecha other = (ArcoEFlecha) obj;
+        if (this.nivel != other.nivel) {
+            return false;
+        }
+        return true;
+    }
+    
 }

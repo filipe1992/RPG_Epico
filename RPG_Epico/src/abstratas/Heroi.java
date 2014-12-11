@@ -37,9 +37,11 @@ public abstract class Heroi implements Personagem {
 
     public Heroi(int niveldebondade, byte life) {
         this.niveldebondade = niveldebondade;
-        this.life = life;
         this.nivel = 0;
-        this.lifemaximo = life;
+        this.setLifemaximo((byte) life);
+        this.setLife(life);
+        armas = new ArrayList<>();
+        itens = new ArrayList<>();
     }
 
     public Heroi() {
@@ -82,7 +84,7 @@ public abstract class Heroi implements Personagem {
         return armas;
     }
 
-    public void setLifemaximo(byte lifemaximo) {
+    public final void setLifemaximo(byte lifemaximo) {
         this.lifemaximo = lifemaximo;
     }
 
@@ -97,7 +99,7 @@ public abstract class Heroi implements Personagem {
     }
 
     @Override
-    public void setLife(byte life) {
+    public final void setLife(byte life) {
         if (life > this.lifemaximo) {
             this.life = this.lifemaximo;
         } else {
@@ -106,11 +108,15 @@ public abstract class Heroi implements Personagem {
     }
 
     public void setNivel(int nivel) {
+        if (nivel < 0)
+            nivel = 0;
         this.nivel = nivel;
     }
 
     @Override
     public void setDinheiro(float dinheiro) {
+        if (dinheiro < 0)
+            dinheiro = 0;
         Heroi.dinheiro = dinheiro;
     }
 

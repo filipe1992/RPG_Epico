@@ -20,6 +20,14 @@ public class Machado extends ArmaCorpoACorpo {
 
     }
 
+    public int getDano() {
+        return dano;
+    }
+
+    public void setDano(int dano) {
+        this.dano = dano;
+    }
+
     public Machado() {
         super();
         this.amolacao = 1;
@@ -57,6 +65,21 @@ public class Machado extends ArmaCorpoACorpo {
     public String toString() {
         return "\nMachado\n" + "\n"
                 + "amolacao=" + amolacao;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Machado other = (Machado) obj;
+        if (this.amolacao != other.amolacao) {
+            return false;
+        }
+        return true;
     }
 
 }

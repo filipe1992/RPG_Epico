@@ -80,4 +80,19 @@ public class Cajado extends ArmaADistancia {
         return super.toString() + "\nCajado\nvoce possui: " + joiasdoInfinito + " joiasdoInfinito ";
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cajado other = (Cajado) obj;
+        if (this.joiasdoInfinito != other.joiasdoInfinito) {
+            return false;
+        }
+        return true;
+    }
+
 }

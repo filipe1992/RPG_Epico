@@ -24,11 +24,16 @@ public class Principal {
     public static Personagem adversario;
 
     public static int numerodebatalhas;
+    
+    public static String usuario;
 
     public static Locais lugar = new cidades();
 
     public static void main(String[] args) {
         String[] herois = {"Arqueiro", "Barbaro", "Mago"};
+        
+        usuario = JOptionPane.showInputDialog(null, "Digite seu nome ");
+        
         String escolha = (String) JOptionPane.showInputDialog(frame, "Escolha um heroi !!!!", "Heroi", JOptionPane.QUESTION_MESSAGE, null, herois, herois[0]);
         if (escolha == null) {
             escolha = "0";
@@ -51,6 +56,8 @@ public class Principal {
         }
         while (menu() == 0)
             System.out.println("=============");
+        
+        JOptionPane.showMessageDialog(frame, "adeus "+ usuario);
         
         System.exit(0);
 
